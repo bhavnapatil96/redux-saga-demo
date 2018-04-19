@@ -48,9 +48,9 @@ function* addEvent (action) {
     }
 }
 function* addLikes (action) {
-    debugger
+    debugger;
     try{
-        debugger
+        debugger;
         const api={
             method:"post",
             url:'http://localhost:5000/api/like/add',
@@ -59,16 +59,15 @@ function* addLikes (action) {
                 'x-auth': localStorage.getItem('token')
             }
         };
-        let event=yield axios(api)
-        debugger;
+        let event=yield axios(api);
         yield put({type:"UPDATE_EVENT",payload:event})
     }catch (e){
-        debugger
+        console.log("Error - ",e);
         yield put({type:"ADD_EVENT_FAILED",payload:e})
     }
 }
 function* mySaga() {
-    debugger
+    debugger;
     yield takeEvery("EVENTLIST", fetchEvents);
     yield takeEvery("LOGINUSER",login)
     yield takeEvery("ADDEVENT",addEvent)

@@ -8,25 +8,23 @@ export const eventReducer=(state=[],action)=>{
             return {...state,eventList:_.cloneDeep(action.payload.data)}
         case "ADD_EVENT":
             console.log('reducer',action.payload.data)
-            debugger
+
             return {...state,eventList:action.payload.data}
         case "UPDATE_EVENT":
             // console.log('reducer',action.payload.data)
             // debugger
             // return {...state,eventList:action.payload.data}
 
-            let s = {...state};
-            debugger;
-            let index=s.eventList.findIndex((d)=>d._id===action.payload.data._id)
-            s.eventList.splice(index,1)
-            s.eventList.splice(index,0,action.payload.data);
-            state = _.cloneDeep({...s});
+            //let s = {...state};
+            let index=state.eventList.findIndex((d)=>d._id===action.payload.data._id)
+                state.eventList.splice(index,1)
+            state.eventList.splice(index,0,action.payload.data);
+            //state = _.cloneDeep({...s});
             return{
                 ...state,eventList:_.cloneDeep(state.eventList)
             }
         default:
-            debugger;
-            return [...state]
+            return state;
     }
 }
 export const userReducer=(state=[],action)=>{

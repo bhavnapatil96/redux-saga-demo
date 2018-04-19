@@ -42,11 +42,11 @@ class Event_List extends React.Component {
     }
 
     likesevent=(eid)=>{
-        debugger
+        debugger;
         let data={
             userId:localStorage.getItem('userId'),
             eventId:eid
-        }
+        };
         this.props.giveLikes(data);
     }
     componentWillMount(){
@@ -181,7 +181,6 @@ function matchDispatchToProps (dispatch) {
             dispatch({type: 'EVENTLIST'})
         },
         giveLikes:(data)=>{
-            debugger
             dispatch({type: 'UPDATEEVENT',
             payload:data})
 
